@@ -1,0 +1,9 @@
+[submodule "AggregatorServicce"]
+	path = AggregatorServicce
+	url = https://github.com/aggkesh/AggregatorServicce.git
+[submodule "OrderService"]
+	path = OrderService
+	url = https://github.com/aggkesh/OrderService.git
+[submodule "UserService"]
+	path = UserService
+	url = https://github.com/aggkesh/UserService.git

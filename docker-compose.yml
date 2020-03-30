@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  userservice:
+    build: ./UserService
+    image: "node:8"
+    container_name: userservice
+    volumes:
+      - ./UserService:/usr/src/app
+    working_dir: /usr/src/app
+    networks:
+      - my-net
+    ports:
+      - "8080:8080"
+    command: "npm start"
+  orderservice:
+    build: ./OrderService
+    image: "node:8"
+    container_name: orderservice
+    volumes:
+      - ./OrderService:/usr/src/app
+    working_dir: /usr/src/app
+    networks:
+      - my-net
+    ports:
+      - "8081:8081"
+    command: "npm start"
+  aggregatorservice:
+    build: ./AggregatorServicce
+    image: "node:8"
+    container_name: aggregatorservice
+    volumes:
+      - ./AggregatorServicce:/usr/src/app
+    working_dir: /usr/src/app
+    networks:
+      - my-net
+    ports:
+      - "8082:8082"
+    links:
+      - userservice
+      - orderservice
+    command: "npm start"
+networks:
+  my-net:
+    driver: bridge
+  ipam:
+      driver: default
